@@ -1,0 +1,550 @@
+/* Basic CSS Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f7f6;
+  color: #333;
+  margin: 0; /* Ensure body itself has no margin */
+}
+
+.App {
+  /* Max width for the main app container, centered */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px; /* Add some padding on the sides */
+  background-color: #fff; /* White background for the app content area */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow for the app container */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.75em;
+  color: #2c3e50; /* Darker color for headings */
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.75em; }
+h4 { font-size: 1.5em; }
+
+p {
+  margin-bottom: 1em;
+}
+
+a {
+  color: #3498db; /* Primary link color */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #2980b9; /* Darker shade on hover */
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Remove extra space below images */
+}
+
+ul, ol {
+  list-style-position: inside;
+  padding-left: 20px; /* Default padding for lists */
+}
+
+/* Utility class for main content sections */
+.main-section {
+  padding: 40px 20px;
+  border-bottom: 1px solid #eee; /* Separator between sections */
+}
+
+.main-section:last-child {
+  border-bottom: none;
+}
+
+/* Remove horizontal rules from App.js as sections will have borders */
+hr {
+  display: none;
+}
+
+/* Basic Button Styling */
+button, .button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #fff;
+  background-color: #3498db; /* Primary button color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, .button-link:hover {
+  background-color: #2980b9; /* Darker shade on hover */
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Form Styling */
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  font-family: inherit;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form textarea:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+form textarea {
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 100px;
+}
+
+form button[type="submit"] {
+  background-color: #2ecc71; /* Green for submit buttons */
+}
+
+form button[type="submit"]:hover {
+  background-color: #27ae60; /* Darker green on hover */
+}
+
+/* Header Styles */
+.site-header {
+  background-color: #2c3e50; /* Dark blue/grey background */
+  padding: 1em 0;
+  color: #ecf0f1; /* Light text color */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.site-header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-header h1 {
+  font-size: 1.8em;
+  margin-bottom: 0; /* Reset heading margin */
+  color: #ecf0f1; /* Ensure header h1 is light */
+}
+
+.site-header .main-nav ul {
+  list-style: none;
+  padding-left: 0; /* Remove default padding */
+  margin: 0;
+  display: flex;
+}
+
+.site-header .main-nav li {
+  margin-left: 20px;
+}
+
+.site-header .main-nav a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.site-header .main-nav a:hover,
+.site-header .main-nav a.active { /* Assuming active class for active links */
+  background-color: #3498db;
+  color: #fff;
+}
+
+/* Mobile Navigation Styles (Added for responsiveness) */
+.site-header .menu-toggle {
+  display: none; /* Hidden by default, shown on small screens */
+  background: none;
+  border: none;
+  color: #ecf0f1;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+/* Footer Styles */
+.site-footer {
+  background-color: #34495e; /* Slightly lighter dark background for footer */
+  color: #ecf0f1;
+  text-align: center;
+  padding: 2em 0;
+  margin-top: 40px; /* Space above the footer */
+  font-size: 0.9em;
+}
+
+.site-footer p {
+  margin-bottom: 0; /* Reset paragraph margin */
+}
+
+/* Hero Section Styles */
+.hero-section {
+  background-color: #3498db; /* Primary color background */
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-size: 3em; /* Larger font for hero heading */
+  margin-bottom: 0.5em;
+  color: #fff; /* Ensure hero h1 is white */
+}
+
+.hero-section p {
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-section .cta-button {
+  background-color: #e74c3c; /* Contrasting color for CTA */
+  padding: 12px 25px;
+  font-size: 1.1em;
+}
+
+.hero-section .cta-button:hover {
+  background-color: #c0392b; /* Darker shade for CTA hover */
+}
+
+/* Project Card Styles */
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Spacing between cards */
+  justify-content: center; /* Center cards if they don't fill the row */
+  padding: 20px 0; /* Padding around the grid */
+}
+
+.project-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 320px; /* Fixed width or use flex-basis for responsiveness */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.project-card .project-image-placeholder {
+  height: 180px;
+  background-color: #ecf0f1; /* Light grey placeholder background */
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: #95a5a6; /* Placeholder text color */
+}
+
+.project-card h3 {
+  font-size: 1.5em;
+  color: #34495e; /* Darker heading for card title */
+  margin-bottom: 0.5em;
+}
+
+.project-card p {
+  font-size: 0.95em;
+  flex-grow: 1; /* Allows description to take available space */
+  margin-bottom: 1em;
+}
+
+.project-card .project-links a {
+  margin-right: 10px;
+  font-weight: bold;
+  /* Using .button-link class for styling, so specific styles here might not be needed unless different from default button */
+}
+
+/* General Section Styling */
+/* .main-section class is already defined globally for padding and border */
+
+.main-section h2 { /* Section headings */
+  font-size: 2.2em;
+  color: #34495e; /* Dark blue/grey for section titles */
+  margin-bottom: 1em;
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid #3498db; /* Accent color border */
+  display: inline-block; /* So border only spans the text width */
+}
+
+/* Specific adjustments for sections if needed */
+.about-me .bio-content {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 30px;
+}
+
+.about-me .text-content {
+  flex: 2; /* Takes twice the space of image */
+  min-width: 300px; /* Minimum width before wrapping */
+}
+
+.about-me .image-placeholder {
+  flex: 1;
+  min-width: 200px; /* Minimum width for image placeholder */
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #95a5a6;
+  font-style: italic;
+}
+
+/* Resume Section Specifics */
+.resume-section article {
+  margin-bottom: 30px;
+}
+
+.resume-section article h3 { /* Sub-headings like "Work Experience" */
+  font-size: 1.6em;
+  color: #2980b9; /* Accent color for sub-headings */
+  margin-bottom: 0.8em;
+}
+
+.resume-section .job,
+.resume-section .education-entry {
+  margin-bottom: 20px;
+  padding-left: 20px;
+  border-left: 3px solid #3498db; /* Accent border for entries */
+}
+
+.resume-section .job h4,
+.resume-section .education-entry h4 {
+  font-size: 1.3em;
+  margin-bottom: 0.2em;
+}
+
+.resume-section .job p,
+.resume-section .education-entry p {
+  margin-bottom: 0.3em;
+  font-size: 0.95em;
+}
+
+.resume-section .skills ul {
+  list-style: none; /* Remove default bullets */
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.resume-section .skills li {
+  background-color: #ecf0f1; /* Light grey background for skill tags */
+  color: #34495e;
+  padding: 8px 15px;
+  border-radius: 20px; /* Pill-shaped tags */
+  font-size: 0.9em;
+}
+
+/* Contact Section Specifics */
+.contact-section form {
+  margin-bottom: 30px; /* Space between form and alternative contact info */
+}
+
+.contact-section .alternative-contact {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0; /* Separator */
+}
+
+.contact-section .alternative-contact p {
+  margin-bottom: 0.5em;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+@media (max-width: 768px) {
+  .App {
+    padding: 0 10px; /* Reduce side padding for the app container */
+  }
+
+  /* Header & Navigation */
+  .site-header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-header .main-nav {
+    width: 100%;
+    margin-top: 1em;
+  }
+
+  .site-header .main-nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .site-header .main-nav li {
+    margin-left: 0;
+    width: 100%;
+    text-align: center; /* Center nav items */
+  }
+
+  .site-header .main-nav a {
+    display: block; /* Make links take full width for easier tapping */
+    padding: 10px;
+    border-bottom: 1px solid #4a627a; /* Separator for stacked links */
+  }
+
+  .site-header .main-nav li:last-child a {
+    border-bottom: none;
+  }
+
+  /* Hide menu toggle for now as JS is not implemented for it */
+  /* .site-header .menu-toggle {
+    display: block;
+    align-self: flex-end; /* Position hamburger to the right */
+  /* } */
+  /* .site-header .main-nav {
+    display: none; /* Hide nav by default on mobile if using toggle */
+  /* } */
+  /* .site-header .main-nav.active {
+    display: flex; /* Show nav when active (toggled) */
+  /* } */
+
+
+  /* Hero Section */
+  .hero-section {
+    padding: 40px 15px;
+  }
+  .hero-section h1 {
+    font-size: 2.2em;
+  }
+  .hero-section p {
+    font-size: 1em;
+  }
+
+  /* Project Grid */
+  .projects-grid {
+    flex-direction: column;
+    align-items: center; /* Center cards when stacked */
+  }
+  .project-card {
+    width: 95%; /* Allow cards to take more width */
+    max-width: 400px; /* But not too wide */
+  }
+
+  /* About Section Content */
+  .about-me .bio-content {
+    flex-direction: column;
+  }
+  .about-me .text-content,
+  .about-me .image-placeholder {
+    flex: 1 1 100%; /* Allow them to take full width */
+    min-width: unset; /* Reset min-width */
+  }
+
+  /* General Section Adjustments */
+  .main-section {
+    padding: 30px 15px;
+  }
+  .main-section h2 {
+    font-size: 1.8em;
+  }
+
+  /* Font Size Adjustments */
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.8em; } /* Already handled by .main-section h2 */
+  h3 { font-size: 1.5em; }
+  h4 { font-size: 1.25em; }
+
+  /* Resume Section */
+  .resume-section .skills ul {
+    justify-content: center; /* Center skill tags */
+  }
+
+  /* Contact Form */
+  .contact-section form {
+    padding: 0; /* Remove padding if any specific to form on desktop */
+  }
+  /* Form inputs are already 100% width by default, which is good for mobile */
+}
+
+@media (max-width: 480px) {
+  .App {
+    padding: 0 5px; /* Further reduce padding for very small screens */
+  }
+
+  .site-header h1 {
+    font-size: 1.5em; /* Smaller site title */
+    text-align: center;
+    width: 100%;
+  }
+
+  .hero-section h1 {
+    font-size: 1.8em;
+  }
+  .hero-section p {
+    font-size: 0.9em;
+  }
+  .hero-section .cta-button {
+    padding: 10px 18px;
+    font-size: 1em;
+  }
+
+  .main-section h2 {
+    font-size: 1.6em;
+  }
+  h3 { font-size: 1.3em; }
+  h4 { font-size: 1.1em; }
+
+  .project-card {
+    width: 100%; /* Full width on very small screens */
+  }
+
+  .resume-section article h3 {
+    font-size: 1.4em;
+  }
+  .resume-section .job h4,
+  .resume-section .education-entry h4 {
+    font-size: 1.15em;
+  }
+  .resume-section .skills li {
+    padding: 6px 12px;
+    font-size: 0.85em;
+  }
+}
