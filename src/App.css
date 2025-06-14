@@ -1,98 +1,46 @@
-:root {
-  /* Color Palette */
-  --primary-color: #007bff; /* Vibrant Blue */
-  --primary-color-darker: #0069d9;
-  --secondary-color: #6c757d; /* Grey */
-  --secondary-color-darker: #5a6268;
-  --accent-color: #00d9ff; /* Bright blue for highlights/hovers */
-  --accent-color-cta: #e74c3c; /* Contrasting color for important CTAs (Orange/Red) */
-  --accent-color-cta-darker: #c0392b;
-
-  --text-color: #343a40; /* Dark grey for body text - improved contrast */
-  --text-color-light: #f8f9fa; /* Light text for dark backgrounds */
-  --headings-color: #2c3e50; /* Darker blue/grey for headings */
-
-  --background-color: #f8f9fa; /* Lighter grey for main page background */
-  --content-bg-color: #ffffff; /* White for content areas like cards, app container */
-
-  --border-color: #dee2e6; /* Standard border color */
-  --border-color-light: #e9ecef; /* Lighter border for subtle divisions */
-
-  /* Spacing Unit */
-  --spacing-unit: 8px;
-
-  /* Typography */
-  --font-family-sans-serif: 'Helvetica Neue', Arial, sans-serif; /* Existing font */
-  --font-family-headings: 'Helvetica Neue', Arial, sans-serif; /* Can be different if desired */
-
-  /* Border Radius */
-  --border-radius-sm: 4px;
-  --border-radius-md: 6px;
-  --border-radius-lg: 8px;
-
-  /* Box Shadows - consistent style, vary intensity */
-  --box-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-  --box-shadow-md: 0 5px 15px rgba(0, 0, 0, 0.08);
-  --box-shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.12);
-}
-
-/* Basic CSS Reset */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Global Styles */
-body {
-  font-family: var(--font-family-sans-serif);
-  line-height: 1.65; /* Slightly increased line height for readability */
-  background-color: var(--background-color);
-  color: var(--text-color);
-  margin: 0;
-}
+/* Basic CSS Reset is in index.css */
+/* Global body styles (font, background, text color) are in index.css */
 
 .App {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 calc(var(--spacing-unit) * 2.5); /* 20px */
-  background-color: var(--content-bg-color);
-  box-shadow: var(--box-shadow-md);
+  /* background-color from index.css body. No separate App background unless intended. */
+  /* box-shadow: none; /* Removing old shadow for a flatter design if this was from old theme */
 }
 
-/* Typographic Scale & Styling */
+/* Base Heading Styles */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-family-headings);
-  color: var(--headings-color);
-  margin-top: 0; /* Remove default top margin */
-  margin-bottom: calc(var(--spacing-unit) * 2); /* 16px */
-  line-height: 1.3; /* Consistent line height for headings */
-  font-weight: 600; /* Slightly bolder for headings */
+  /* font-family is inherited from body (var(--font-primary)) */
+  /* color is inherited from body (var(--color-text)) */
+  margin: 0 0 calc(var(--spacing-unit) * 2) 0;
+  font-weight: 700; /* New default weight */
+  line-height: 1.2; /* New default line-height */
 }
 
-h1 { font-size: 2.8rem; margin-bottom: calc(var(--spacing-unit) * 3); } /* ~44.8px */
-h2 { font-size: 2.2rem; } /* ~35.2px - For section titles */
-h3 { font-size: 1.7rem; } /* ~27.2px - For card titles, sub-section titles */
-h4 { font-size: 1.3rem; } /* ~20.8px */
-h5 { font-size: 1.1rem; } /* ~17.6px */
-h6 { font-size: 1rem; }   /* ~16px */
+/* Specific heading sizes for the new design - can be adjusted */
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }   /* Example: Section titles */
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
 
 p {
   margin-top: 0;
   margin-bottom: calc(var(--spacing-unit) * 2); /* 16px */
+  /* color: var(--color-text); -- Inherited */
+  line-height: 1.6; /* As per new spec, if different from body this is where it goes */
 }
 
 a {
-  color: var(--primary-color);
+  color: var(--color-accent); /* Default link color to accent */
   text-decoration: none;
-  transition: color 0.2s ease-in-out;
+  transition: color 0.3s ease;
 }
 
 a:hover {
-  color: var(--primary-color-darker);
-  /* text-decoration: underline; - Optionally keep, but modern designs often omit for non-content links */
+  color: var(--color-accent-hover); /* Use a darker accent for hover */
 }
 
 img {
@@ -241,123 +189,225 @@ hr {
 /* Remove old specific submit button styles if any, or ensure they don't conflict */
 
 
-/* Header Styles */
+/* Header Styles - New */
 .site-header {
-  background-color: var(--headings-color); /* Using headings color as dark background */
-  padding: calc(var(--spacing-unit) * 1.5) 0; /* 12px */
-  color: var(--text-color-light);
-  box-shadow: var(--box-shadow-sm);
-  /* Ensuring vertical alignment - flex properties are on .container */
+  padding: calc(var(--spacing-unit) * 3) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* Removed background-color, color, box-shadow from old .site-header */
 }
 
-.site-header .container {
-  max-width: 1200px; /* This can be a variable too if needed */
-  margin: 0 auto;
-  padding: 0 calc(var(--spacing-unit) * 2.5); /* 20px */
+/* Renamed .site-header .container to .site-header-content for clarity,
+   or ensure .container within .site-header gets these flex properties.
+   For this pass, I'm assuming .site-header .container is targeted for layout.
+   If a new class .site-header-content is added in JSX, that would be the selector.
+*/
+.site-header .container { /* This selector might need to be .site-header-content */
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Vertically aligns items in the flex container */
+  align-items: center;
+  /* max-width and margin:auto are on .App or a general .container */
+  /* padding is on .App or .site-header can have its own horizontal padding if needed */
 }
 
-.site-header h1 {
-  font-size: 1.8rem; /* Adjusted to rem */
-  margin-bottom: 0;
-  color: var(--text-color-light);
+/* Assuming the h1 inside .site-header is the site title.
+   If it's a different element (e.g. a <Link> or <span>),
+   the .site-title class should be applied in JSX.
+   For now, styling .site-header h1 and also providing .site-title.
+*/
+.site-header h1 { /* Default styling for h1 if it's the site title */
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  margin-bottom: 0; /* Remove default h1 margin */
+}
+.site-title { /* Use this class in JSX for the site title element */
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
 }
 
-.site-header .main-nav ul {
+
+.site-header .main-nav ul { /* Assuming structure .main-nav > ul > li > a */
   list-style: none;
-  padding-left: 0; /* Remove default padding */
+  padding-left: 0;
   margin: 0;
   display: flex;
 }
 
 .site-header .main-nav li {
-  margin-left: calc(var(--spacing-unit) * 2.5); /* 20px */
+  margin-left: calc(var(--spacing-unit) * 3);
 }
 
 .site-header .main-nav a {
-  color: var(--text-color-light);
+  color: var(--color-text);
   text-decoration: none;
+  font-size: 1rem;
   font-weight: 500;
-  padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.875); /* 8px 15px */
-  border-radius: var(--border-radius-md);
-  position: relative;
-  transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease;
+  /* Removing old ::before and ::after styling for underline/background effects */
 }
-
-.site-header .main-nav a::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--primary-color); /* Using primary color with alpha - variable could be created */
-  opacity: 0; /* Start transparent */
-  border-radius: var(--border-radius-md);
-  transform: scaleX(0.9); /* Start slightly smaller */
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  z-index: -1;
-}
-
-.site-header .main-nav a:hover::before,
-.site-header .main-nav a.active::before {
-  opacity: 0.2; /* Primary color with alpha on hover/active */
-  transform: scaleX(1);
+.site-header .main-nav a::before,
+.site-header .main-nav a::after {
+  display:none;
 }
 
 .site-header .main-nav a:hover,
 .site-header .main-nav a.active {
-  color: var(--accent-color); /* Brighter text color on hover/active */
+  color: var(--color-accent);
+  /* background-color: transparent; /* Ensure no old hover background */
+}
+
+
+/* Modern Button Style - New */
+.btn-modern {
+  display: inline-block;
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background-color: transparent;
+  border: 1px solid var(--color-text);
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3); /* 12px 24px */
+  text-decoration: none;
+  border-radius: var(--border-radius-md); /* Using existing variable for consistency */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-modern:hover {
+  background-color: var(--color-text);
+  color: var(--color-background);
+  border-color: var(--color-text); /* Ensure border color matches on hover if needed */
+}
+
+
+/* Hero Section Styles - New */
+.hero-section { /* This replaces old .hero-section styles */
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Align text to the left */
+  padding: calc(var(--spacing-unit) * 4) 0; /* Padding for top/bottom, container handles side */
+  text-align: left;
+  /* background-color: var(--primary-color); -- Old variable, hero is transparent to body bg */
+  /* color: var(--text-color-light); -- Old variable, text color from body */
+}
+
+/* If .hero-section has a .container div inside it for width constraint */
+.hero-section .container {
+  width: 100%; /* Ensure container takes full width within its parent's padding */
+}
+
+.hero-title { /* New class */
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: calc(var(--spacing-unit) * 3); /* 24px */
+  max-width: 800px; /* Limit width for readability */
+  color: var(--color-text); /* Ensure it uses the new text color */
+}
+
+.hero-subtitle { /* New class */
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: calc(var(--spacing-unit) * 4); /* 32px */
+  max-width: 600px;
+  opacity: 0.8;
+  color: var(--color-text); /* Ensure it uses the new text color */
 }
 
 /* Mobile Navigation Styles (Added for responsiveness) */
 .site-header .menu-toggle {
-  display: none; /* Hidden by default, shown on small screens */
+  display: none;
   background: none;
   border: none;
-  color: #ecf0f1;
+  color: var(--color-text); /* Use new text color */
   font-size: 1.5em;
   cursor: pointer;
 }
 
-/* Footer Styles */
+/* Footer Styles - Placeholder, to be fully styled in Phase 2 */
 .site-footer {
-  background-color: var(--headings-color); /* Consistent dark background */
-  color: var(--text-color-light);
+  /* background-color: var(--headings-color); -- Old variable */
+  /* color: var(--text-color-light); -- Old variable */
   text-align: center;
-  padding: calc(var(--spacing-unit) * 3) 0; /* 24px */
-  margin-top: calc(var(--spacing-unit) * 5); /* 40px */
+  padding: calc(var(--spacing-unit) * 4) 0; /* Basic padding */
+  margin-top: calc(var(--spacing-unit) * 5);
   font-size: 0.9rem;
-  border-top: 1px solid var(--primary-color); /* Accent top border */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle top border */
 }
 
 .site-footer p {
-  margin-bottom: 0; /* Reset paragraph margin */
+  margin-bottom: 0;
+  opacity: 0.7; /* Slightly faded footer text */
 }
 
-/* Hero Section Styles */
-.hero-section {
-  background-color: var(--primary-color);
-  color: var(--text-color-light);
-  padding: calc(var(--spacing-unit) * 8) calc(var(--spacing-unit) * 2.5); /* 64px 20px */
-  text-align: center;
+
+/* Minimal reset for other sections for this phase if needed */
+.main-section {
+  padding: calc(var(--spacing-unit) * 5) 0; /* Basic padding for other sections */
+  /* border-bottom: 1px solid var(--border-color-light); -- Old Variable */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Subtle separator for dark theme */
+}
+.main-section:last-child {
+  border-bottom: none;
 }
 
-.hero-section h1 {
-  font-size: 3rem; /* Use rem for scalability */
-  margin-bottom: calc(var(--spacing-unit) * 1.5); /* 12px */
-  color: var(--text-color-light);
+.main-section h2 { /* Basic styling for other section titles */
+  font-size: 2rem;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  /* color: var(--color-text); -- Inherited */
+  /* border-bottom: 3px solid var(--primary-color); -- Old style, remove for now */
+  /* display: inline-block; -- Old style */
 }
 
-.hero-section p {
-  font-size: 1.25rem; /* Use rem */
-  margin-bottom: calc(var(--spacing-unit) * 3); /* 24px */
-  max-width: 700px; /* Slightly increased max-width for text */
-  margin-left: auto;
-  margin-right: auto;
-  opacity: 0.9; /* Slightly transparent for softer look */
+/* Ensure old specific form styling for .contact-section is removed or overridden */
+/* This is a temporary adaptation for dark theme. Full form styling in Phase 2. */
+.contact-section form label {
+  /* color: var(--headings-color); -- Old variable */
+  color: var(--color-text); /* Ensure labels are visible */
+}
+.contact-section form input[type="text"],
+.contact-section form input[type="email"],
+.contact-section form textarea {
+  background-color: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--color-text);
+  border-radius: var(--border-radius-md);
+}
+.contact-section form input[type="text"]::placeholder,
+.contact-section form input[type="email"]::placeholder,
+.contact-section form textarea::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+.contact-section form input[type="text"]:focus,
+.contact-section form input[type="email"]:focus,
+.contact-section form textarea:focus {
+  border-color: var(--color-accent);
+  background-color: rgba(255,255,255,0.1);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15); /* Using --color-accent based shadow */
+}
+
+/* Removing old project card, about, resume styles to avoid major conflicts */
+/* These will be redesigned in Phase 2. */
+.projects-grid, .project-card, .about-me, .resume-section {
+  /* Minimal reset or display:none if they break layout too much before redesign */
+  /* For now, let them inherit global styles. */
+}
+.project-card {
+  border: 1px solid rgba(255,255,255,0.1); /* Simple border for dark theme */
+  background-color: rgba(255,255,255,0.03); /* Slightly different bg for card */
+}
+.project-card .project-image-placeholder {
+   background-color: rgba(255,255,255,0.05);
+   color: rgba(255,255,255,0.4);
+}
+.resume-section .skills li {
+  background-color: var(--color-accent);
+  color: var(--color-background); /* Text color for dark bg */
 }
 
 /* .hero-section .cta-button will be replaced by .btn .btn-primary */
