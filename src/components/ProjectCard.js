@@ -1,19 +1,21 @@
 import React from 'react';
 
-function ProjectCard({ title, description, imageUrl, demoLink, sourceLink }) {
+const ProjectCard = ({ title, category, description, demoLink, sourceLink }) => {
   return (
     <div className="project-card">
-      <div className="project-image-placeholder">
-        {imageUrl ? <img src={imageUrl} alt={title} /> : <p>Project Image</p>}
-      </div>
-      <h3>{title || "Project Title"}</h3>
-      <p>{description || "Short project description..."}</p>
+      <h3 className="project-title">{title || "Project Title"}</h3>
+      {category && <p className="project-category">{category}</p>}
+      <p className="project-description">{description || "Short project description..."}</p>
       <div className="project-links">
-        {demoLink && <a href={demoLink} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Live Demo</a>}
-        {sourceLink && <a href={sourceLink} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Source Code</a>}
+        {demoLink && demoLink !== "#" && (
+          <a href={demoLink} target="_blank" rel="noopener noreferrer" className="btn-modern btn-small">Live Demo</a>
+        )}
+        {sourceLink && sourceLink !== "#" && (
+          <a href={sourceLink} target="_blank" rel="noopener noreferrer" className="btn-modern btn-small">Source Code</a>
+        )}
       </div>
     </div>
   );
-}
+};
 
 export default ProjectCard;

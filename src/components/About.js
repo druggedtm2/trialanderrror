@@ -1,13 +1,15 @@
+// portfolio-website/src/components/About.js
 import React from 'react';
 import AboutSection from './AboutSection';
+import SkillsOverviewSection from './SkillsOverviewSection'; // Import the new section
 
-function About() {
+const About = () => {
   return (
-    <div>
+    <div> {/* Using a div to wrap multiple sections on the page */}
       <AboutSection />
-      {/* Placeholder h1 removed, AboutSection now provides the content */}
+      <SkillsOverviewSection />
     </div>
   );
-}
+};
 
 export default About;

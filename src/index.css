@@ -5,6 +5,7 @@
   --color-background: #111111; /* Dark grey */
   --color-text: #F5F5F5; /* Light grey */
   --color-accent: #007bff; /* Blue - placeholder */
+  --color-accent-rgb: 0, 123, 255; /* RGB for accent color */
   --color-accent-hover: #0056b3; /* Darker blue for hover */
   --spacing-unit: 8px;
   --border-radius-md: 6px; /* Re-adding from previous theme for consistency if needed by other elements */

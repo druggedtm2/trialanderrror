@@ -1,89 +1,60 @@
 import React from 'react';
+import { resumeData } from '../data/resumeData.js'; // Adjusted path
 
-function ResumeSection() {
-  const workExperience = [
-    {
-      title: "Frontend Developer",
-      company: "Creative Agency LLC",
-      dates: "Jan 2023 - Present",
-      description: [
-        "- Developed and maintained responsive UI components using React and styled-components for various client websites.",
-        "- Collaborated with UX/UI designers and backend developers to translate mockups and requirements into functional features.",
-        "- Optimized application performance, achieving a 20% reduction in load times through code splitting and lazy loading."
-      ]
-    },
-    {
-      title: "Software Engineer Intern",
-      company: "Tech Solutions Inc.",
-      dates: "May 2022 - Aug 2022",
-      description: [
-        "- Assisted senior developers in building new features for a large-scale SaaS platform using Angular and Java Spring Boot.",
-        "- Wrote unit and integration tests to ensure code quality and participated in daily stand-ups and sprint planning sessions.",
-        "- Gained experience with Git version control, JIRA, and agile development methodologies."
-      ]
-    }
-  ];
-
-  const education = [
-    {
-      degree: "B.S. in Computer Science",
-      institution: "University of Technology",
-      date: "Graduated May 2022"
-    },
-    {
-      degree: "Web Development Bootcamp Certificate",
-      institution: "Online Coding Academy",
-      date: "Completed Dec 2021"
-    }
-  ];
-
-  const skills = [
-    "JavaScript (ES6+)", "React", "Redux", "Node.js", "Express.js",
-    "Python", "HTML5", "CSS3", "Sass", "Bootstrap",
-    "Git & GitHub", "REST APIs", "GraphQL", "SQL (PostgreSQL)", "NoSQL (MongoDB)",
-    "Jest & React Testing Library", "Webpack", "Babel", "Agile/Scrum",
-    "Problem Solving", "Team Collaboration", "Communication"
-  ];
+const ResumeSection = () => {
+  // resumeData is now imported.
+  // If it were to be passed as a prop: const { title: resumeTitle, sections } = props.resumeData;
+  const { title: resumeTitle, sections } = resumeData;
 
   return (
-    <section className="resume-section main-section">
-      <h2>My Resume</h2>
+    <section className="resume-section">
+      <div className="container">
+        <h2 className="section-title">{resumeTitle}</h2>
 
-      <article className="work-experience">
-        <h3>Work Experience</h3>
-        {workExperience.map((job, index) => (
-          <div key={index} className="job">
-            <h4>{job.title}</h4>
-            <p><strong>{job.company}</strong> | {job.dates}</p>
-            <ul>
-              {job.description.map((point, i) => (
-                <li key={i}>{point}</li>
-              ))}
-            </ul>
-          </div>
+        {sections.map((section, index) => (
+          <article key={index}>
+            <h3 className="resume-subsection-title">{section.title}</h3>
+
+            {section.entries && section.entries.map((entry, entryIndex) => (
+              <div key={entryIndex} className="resume-entry">
+                {entry.title && <h4 className="resume-entry-title">{entry.title}</h4>}
+                {entry.subtitle && <p className="resume-entry-subtitle">{entry.subtitle}</p>}
+                {entry.description && (
+                  Array.isArray(entry.description) ? (
+                    <ul className="resume-entry-description">
+                      {entry.description.map((point, pointIndex) => (
+                        <li key={pointIndex}>{point}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="resume-entry-description">{entry.description}</p>
+                  )
+                )}
+                {entry.innovation && <p className="resume-entry-description"><em>Innovation: {entry.innovation}</em></p>}
+                {entry.notableProject && <p className="resume-entry-description"><strong>Notable Project:</strong> {entry.notableProject}</p>}
+                {entry.detailedResponsibilities && <p className="resume-entry-description">{entry.detailedResponsibilities}</p>}
+              </div>
+            ))}
+
+            {section.skillCategories && (
+              <ul className="skills-list">
+                {section.skillCategories.map((category, catIndex) => (
+                  <React.Fragment key={catIndex}>
+                    {/* Optional: Render category title if design requires it later
+                    {category.name && <h5 className="skills-category-title">{category.name}</h5>}
+                    */}
+                    {category.skills.map((skill, skillIndex) => (
+                      <li key={skillIndex}>{skill}</li>
+                    ))}
+                  </React.Fragment>
+                ))}
+              </ul>
+            )}
+          </article>
         ))}
-      </article>
-
-      <article className="education">
-        <h3>Education</h3>
-        {education.map((edu, index) => (
-          <div key={index} className="education-entry">
-            <h4>{edu.degree}</h4>
-            <p><strong>{edu.institution}</strong> | {edu.date}</p>
-          </div>
-        ))}
-      </article>
-
-      <article className="skills">
-        <h3>Skills</h3>
-        <ul>
-          {skills.map((skill, index) => (
-            <li key={index}>{skill}</li>
-          ))}
-        </ul>
-      </article>
+      </div>
     </section>
   );
-}
+};
 
 export default ResumeSection;
