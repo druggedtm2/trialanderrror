@@ -8,7 +8,7 @@ function HeroSection() {
         Creating modern and responsive web applications that users love.
         Passionate about clean code and intuitive user experiences.
       </p>
-      <button className="cta-button">Explore My Work</button>
+      <button className="btn btn-primary">Explore My Work</button>
     </section>
   );
 }

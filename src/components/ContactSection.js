@@ -28,7 +28,7 @@ function ContactSection() {
           <textarea id="message" name="message" rows="6" placeholder="Hi John, I'd like to connect regarding..." required></textarea>
         </div>
 
-        <button type="submit">Send Message</button>
+        <button type="submit" className="btn btn-primary">Send Message</button>
       </form>
 
       <div className="alternative-contact">

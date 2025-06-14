@@ -9,8 +9,8 @@ function ProjectCard({ title, description, imageUrl, demoLink, sourceLink }) {
       <h3>{title || "Project Title"}</h3>
       <p>{description || "Short project description..."}</p>
       <div className="project-links">
-        {demoLink && <a href={demoLink} target="_blank" rel="noopener noreferrer" className="button-link">Live Demo</a>}
-        {sourceLink && <a href={sourceLink} target="_blank" rel="noopener noreferrer" className="button-link">Source Code</a>}
+        {demoLink && <a href={demoLink} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Live Demo</a>}
+        {sourceLink && <a href={sourceLink} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Source Code</a>}
       </div>
     </div>
   );
